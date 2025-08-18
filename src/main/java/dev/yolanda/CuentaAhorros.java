@@ -2,7 +2,7 @@ package dev.yolanda;
 
 public class CuentaAhorros extends CuentaBancaria {
 
-    private boolean activa;
+    protected  boolean activa;
 
     public CuentaAhorros(float saldo, float tasaAnual) {
         super(saldo, tasaAnual);
@@ -11,12 +11,10 @@ public class CuentaAhorros extends CuentaBancaria {
 
     @Override
     public void calcularExtractoMensual() {
-        
         if (retiros > 4) {
             comisionMensual += (retiros - 4) * 1000;
-        } else {
-            super.calcularExtractoMensual();
         }
+        super.calcularExtractoMensual();
     }
 
     @Override

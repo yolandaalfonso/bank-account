@@ -15,6 +15,14 @@ public class CuentaBancaria {
         this.comisionMensual = 0;
     }
 
+    
+
+    public void setComisionMensual(float comisionMensual) {
+        this.comisionMensual = comisionMensual;
+    }
+
+
+
     public void consignar(float cantidad) {
         saldo += cantidad;
         consignaciones ++;
@@ -33,6 +41,7 @@ public class CuentaBancaria {
 
     public void calcularInteres(){
         float interesMensual = (saldo * (tasaAnual/12)) / 100;
+        saldo += interesMensual;
     }
 
     public void calcularExtractoMensual() {

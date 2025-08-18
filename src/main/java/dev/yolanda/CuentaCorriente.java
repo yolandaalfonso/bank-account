@@ -2,7 +2,7 @@ package dev.yolanda;
 
 public class CuentaCorriente extends CuentaBancaria{
 
-    private float sobregiro;
+    protected float sobregiro;
 
     public CuentaCorriente(float saldo, float tasaAnual) {
         super(saldo, tasaAnual);
@@ -52,6 +52,8 @@ public class CuentaCorriente extends CuentaBancaria{
         System.out.println("Número de transacciones: " + (consignaciones + retiros));
         System.out.println("Sobregiro: " + sobregiro);
     }
+
+    
     
 
 
