@@ -16,37 +16,41 @@ public class CuentaCorriente extends CuentaBancaria{
             saldo -=retirada;
             retiros ++;
         } else{
-            sobregiro = saldo -=retirada;
+            float diferencia = retirada - saldo;
+            saldo = 0;
+            sobregiro += diferencia;
             retiros ++;
         }
     }
 
     @Override
     public void consignar(float cantidad) {
-        super.consignar(cantidad);
         if (sobregiro > 0) {
-            sobregiro += cantidad;
-            consignaciones ++;
+            if (cantidad >= sobregiro){
+                sobregiro = 0;
+                cantidad -= sobregiro;
+                saldo += cantidad;
+            }else {
+                sobregiro -= cantidad;
+            }
+            
         }else{
             saldo += cantidad;
-            consignaciones ++;
         }
-        
+        consignaciones ++;
     }
 
     @Override
     public void calcularExtractoMensual() {
-        //saldo -= comisionMensual;
-        //calcularInteres();
+        super.calcularExtractoMensual();
     }
 
     @Override
     public void imprimir() {
         System.out.println("Saldo: " + saldo);
-        System.out.println("Número de consignaciones: " + consignaciones);
-        System.out.println("Número de retiros: " + retiros);
-        System.out.println("Tasa anual: " + tasaAnual + "%");
         System.out.println("Comisión mensual: " + comisionMensual);
+        System.out.println("Número de transacciones: " + (consignaciones + retiros));
+        System.out.println("Sobregiro: " + sobregiro);
     }
     
 
