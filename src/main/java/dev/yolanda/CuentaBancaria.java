@@ -15,7 +15,6 @@ public class CuentaBancaria {
         this.comisionMensual = 0;
     }
 
-    //Consignar?
     public void consignar(float cantidad) {
         saldo += cantidad;
         consignaciones ++;
